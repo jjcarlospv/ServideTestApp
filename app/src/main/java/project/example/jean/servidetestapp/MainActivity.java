@@ -1,5 +1,6 @@
 package project.example.jean.servidetestapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,13 +24,20 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_main_startservice) {
+            startService(new Intent(this,MyService.class));
+            return true;
+        }
+
+        if (id == R.id.menu_main_startintentservice) {
+            startService(new Intent(this,MyIntentService.class));
+            return true;
+        }
+
+        if (id == R.id.menu_main_stopintentservice) {
+            stopService(new Intent(this,MyIntentService.class));
             return true;
         }
 
